@@ -1,0 +1,12 @@
+﻿@model WebApp.Areas.Admin.ViewModels.MessageCreateEditViewModel
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Message.HeaderId" class="control-label">@App.Resources.Domain.RMessageHeader.MessageHeader</label>
+    <select asp-for="Message.HeaderId" class ="form-control" asp-items="Model.HeaderSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Message.Content" class="control-label">@App.Resources.Domain.RMessage.Content</label>
+    <input asp-for="Message.Content" class="form-control" />
+    <span asp-validation-for="Message.Content" class="text-danger"></span>
+</div>

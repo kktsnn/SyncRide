@@ -1,0 +1,31 @@
+@using App.Domain.Enums
+@model WebApp.Areas.Admin.ViewModels.ChannelCreateEditViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@Base.Resources.Domain._Shared.Create</h1>
+
+<h4>@App.Resources.Domain.RChannel.Channel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            
+            <partial name="_CreateEdit" model="Model"/>
+            
+            <div class="form-group">
+                <input type="submit" value="@Base.Resources.Domain._Shared.Create" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@Base.Resources.Domain._Shared.BackToList</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

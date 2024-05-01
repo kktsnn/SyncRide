@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc
+@using App.Domain.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var user = await UserManager.GetUserAsync(User);
+        
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Index" title="Account">@Base.Resources.Views.Shared._Layout.Hello @user!.FirstName @user.LastName (@User.Identity?.Name)!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-danger">@Base.Resources.Views.Shared._Layout.Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">@Base.Resources.Views.Shared._Layout.Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">@Base.Resources.Views.Shared._Layout.Login</a>
+        </li>
+    }
+</ul>

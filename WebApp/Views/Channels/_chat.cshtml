@@ -1,0 +1,98 @@
+﻿@using App.Domain.Enums
+@using App.Domain.Identity
+@using Microsoft.AspNetCore.Identity
+@model ChannelLayoutViewModel
+@inject UserManager<AppUser> UserManager
+
+@{
+    var notReadlineRendered = false;
+    
+    string CombineIconPath(App.BLL.DTO.Identity.AppUser user)
+    {
+        return "/Assets/Icons/" +
+               (user.ProfilePictureExtension != null
+                   ? user.Id + user.ProfilePictureExtension
+                   : "default.png");
+    }
+}
+
+@if (Model.ActiveChannel == null)
+{
+    <div class="text-center">
+        <h1 class="display-4">Welcome To SyncRide</h1>
+        <p>To get started create a route and wait for a match!</p>
+    </div>
+}
+else
+{
+    var isOwner = Model.ActiveChannel.OwnerId == Guid.Parse(UserManager.GetUserId(User)!);
+    
+    <div class="row border-bottom box-shadow mb-3">
+        <div class="col">
+            <h2>@Model.ActiveChannel.ChannelName</h2>
+            @Model.ActiveChannel.Description
+        </div>
+        @if (Model.ActiveChannel.Type == EChannelType.Group && isOwner)
+        {
+            <div class="col-md-auto">
+                <a asp-action="Edit" asp-route-id="@Model.ActiveChannel.Id" class="btn btn-outline-info">@Base.Resources.Domain._Shared.Edit</a>
+                <a asp-action="Delete" asp-route-id="@Model.ActiveChannel.Id" class="btn btn-outline-danger">@Base.Resources.Domain._Shared.Delete</a>
+            </div>
+        }
+    </div>
+    <div id="messages" class="d-flex flex-column pt-3">
+        @foreach (var m in Model.ReceivedMessages!)
+        {
+            if (!notReadlineRendered && !m.IsRead)
+            {
+                <div class="row">
+                    <div class="col">
+                        <hr class="bg-danger w-100"/>
+                    </div>
+                    <div class="col-md-auto">
+                        <span class="text-center text-danger">Not read</span>
+                    </div>
+                    <div class="col">
+                        <hr class="bg-danger w-100"/>
+                    </div>
+                </div>
+                
+                notReadlineRendered = true;
+            }
+            <div id="m_@m.Id" class="row pb-3">
+                <div class="col-md-auto">
+                    <img alt="@m.MessageHeader!.Sender!.Name icon" src="@CombineIconPath(m.MessageHeader!.Sender!.AppUser!)" width="40" height="40" class="rounded-circle mt-2">
+                </div>
+                <div class="col">
+                    @if (m.MessageHeader!.ParentId != null)
+                    {
+                        <div class="row fs-6">> @m.MessageHeader!.Parent!.Content</div>
+                    }
+                    <div class="row">
+                        <span class="col-md-auto fs-5 fw-bold">@m.MessageHeader!.Sender!.Name</span> 
+                        <span class="col text-muted mt-1 p-0">@m.MessageHeader!.SentAt</span>
+                        @if (isOwner)
+                        {
+                            <form class="col-md-auto" asp-controller="Messages" asp-action="Delete" asp-route-id="@m.Id" asp-route-channelId="@Context.Request.RouteValues["id"]">
+                                <button type="submit" value="delete" class="btn btn-link text-danger">Delete</button>
+                            </form>
+                        }
+                    </div>
+                    <div class="row fs-6">
+                        <span>@m.MessageHeader?.Message?.Content</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div>
+        <form asp-controller="Messages" asp-action="Create" asp-route-channelId="@Context.Request.RouteValues["id"]" class="row">
+            <div class="col">
+                <input class="form-control" name="content" placeholder="Send a message...">
+            </div>
+            <div class="col-md-auto">
+                <button type="submit" value="Send" class="btn btn-outline-success">Send</button>
+            </div>
+        </form>
+    </div>
+}

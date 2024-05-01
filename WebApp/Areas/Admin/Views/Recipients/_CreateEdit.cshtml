@@ -1,0 +1,16 @@
+﻿@model WebApp.Areas.Admin.ViewModels.RecipientCreateEditViewModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Recipient.MessageHeaderId" class="control-label">@App.Resources.Domain.RMessageHeader.MessageHeader</label>
+    <select asp-for="Recipient.MessageHeaderId" class ="form-control" asp-items="Model.MessageHeaderSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Recipient.MemberId" class="control-label">@App.Resources.Domain.RChannelMember.ChannelMember</label>
+    <select asp-for="Recipient.MemberId" class ="form-control" asp-items="Model.MemberSelectList"></select>
+</div>
+<div class="form-group form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" asp-for="Recipient.IsRead" /> @Html.DisplayNameFor(model => model.Recipient.IsRead)
+    </label>
+</div>

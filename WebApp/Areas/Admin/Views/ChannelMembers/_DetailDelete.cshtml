@@ -1,0 +1,28 @@
+﻿@model App.DAL.DTO.ChannelMember
+
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Channel)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Channel!.ChannelName)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Route)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Route!.Name)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.AppUser)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.AppUser!.Email)
+    </dd>
+</dl>

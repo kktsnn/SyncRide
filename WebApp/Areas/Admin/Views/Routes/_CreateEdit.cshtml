@@ -1,0 +1,22 @@
+﻿@model WebApp.Areas.Admin.ViewModels.RouteCreateEditViewModel
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Route.AppUserId" class="control-label">@Base.Resources.Domain.Identity.RAppUser.AppUser</label>
+    <select asp-for="Route.AppUserId" class ="form-control" asp-items="Model.AppUserSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Route.Name" class="control-label">@App.Resources.Domain.RRoute.Name</label>
+    <input asp-for="Route.Name" class="form-control" />
+    <span asp-validation-for="Route.Name" class="text-danger"></span>
+</div>
+<div class="form-group form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" asp-for="Route.Active" /> @Html.DisplayNameFor(model => model.Route.Active)
+    </label>
+</div>
+<div class="form-group">
+    <label asp-for="Route.Comment" class="control-label">@App.Resources.Domain.RRoute.Comment</label>
+    <input asp-for="Route.Comment" class="form-control" />
+    <span asp-validation-for="Route.Comment" class="text-danger"></span>
+</div>

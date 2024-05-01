@@ -1,0 +1,36 @@
+﻿@model WebApp.Areas.Admin.ViewModels.MatchCreateEditViewModel
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Match.Route1Id" class="control-label">@(App.Resources.Domain.RRoute.Route)1</label>
+    <select asp-for="Match.Route1Id" class ="form-control" asp-items="Model.Route1SelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Match.Route2Id" class="control-label">@(App.Resources.Domain.RRoute.Route)2</label>
+    <select asp-for="Match.Route2Id" class ="form-control" asp-items="Model.Route2SelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Match.MatchPercent" class="control-label">@App.Resources.Domain.RMatch.MatchPercent</label>
+    <input asp-for="Match.MatchPercent" class="form-control" />
+    <span asp-validation-for="Match.MatchPercent" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Match.DeltaTime" class="control-label">@App.Resources.Domain.RMatch.DeltaTime</label>
+    <input asp-for="Match.DeltaTime" class="form-control" />
+    <span asp-validation-for="Match.DeltaTime" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Match.DeltaDist" class="control-label">@App.Resources.Domain.RMatch.DeltaDist</label>
+    <input asp-for="Match.DeltaDist" class="form-control" />
+    <span asp-validation-for="Match.DeltaDist" class="text-danger"></span>
+</div>
+<div class="form-group form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" asp-for="Match.Route1Accepted" /> @Html.DisplayNameFor(model => model.Match.Route1Accepted)1
+    </label>
+</div>
+<div class="form-group form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" asp-for="Match.Route2Accepted" /> @Html.DisplayNameFor(model => model.Match.Route2Accepted)2
+    </label>
+</div>

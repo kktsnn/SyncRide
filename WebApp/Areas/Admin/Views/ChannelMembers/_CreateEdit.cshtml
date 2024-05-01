@@ -1,0 +1,16 @@
+﻿@model WebApp.Areas.Admin.ViewModels.ChannelMemberCreateEditViewModel
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="ChannelMember.ChannelId" class="control-label">@App.Resources.Domain.RChannel.Channel</label>
+    <select asp-for="ChannelMember.ChannelId" class ="form-control" asp-items="Model.ChannelSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="ChannelMember.AppUserId" class="control-label">@Base.Resources.Domain.Identity.RAppUser.AppUser</label>
+    <select asp-for="ChannelMember.AppUserId" class ="form-control" asp-items="Model.AppUserSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="ChannelMember.Nickname" class="control-label">@App.Resources.Domain.RChannelMember.Nickname</label>
+    <input asp-for="ChannelMember.Nickname" class="form-control" />
+    <span asp-validation-for="ChannelMember.Nickname" class="text-danger"></span>
+</div>

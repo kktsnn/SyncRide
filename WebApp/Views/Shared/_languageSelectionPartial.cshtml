@@ -1,0 +1,32 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<RequestLocalizationOptions> LocalizationOptions;
+@{
+    var cultureItems = LocalizationOptions.Value.SupportedCultures!.Select(c => new
+    {
+        Value = c.Name,
+        Text = c.NativeName
+    });
+}
+<ul class="navbar-nav">
+    <li class="dropstart">
+    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        @Thread.CurrentThread.CurrentCulture.Name
+    </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            @foreach (var item in cultureItems)
+            {
+                <li>
+                    <a class="dropdown-item"
+                       asp-area=""
+                       asp-controller="Home"
+                       asp-action="SetLanguage"
+                       asp-route-culture="@item.Value"
+                       asp-route-returnUrl="@Context.Request.Path@Context.Request.QueryString">
+                        @item.Text
+                    </a>
+                </li>
+                
+            }
+        </ul>
+    </li>
+</ul>

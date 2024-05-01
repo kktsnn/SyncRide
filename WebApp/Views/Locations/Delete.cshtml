@@ -1,0 +1,46 @@
+@model App.BLL.DTO.Location
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>@Base.Resources.Domain._Shared.Delete</h1>
+
+<h1>@Base.Resources.Domain._Shared.AreYouSure</h1>
+<div>
+    <h4>@App.Resources.Domain.RLocation.Location</h4>
+    <hr />
+    
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="@Base.Resources.Domain._Shared.Delete" class="btn btn-danger" /> |
+        <a asp-controller="Routes" asp-action="Edit" asp-route-id="@ViewContext.RouteData.Values["routeId"]">@Base.Resources.Domain._Shared.BackToList</a>
+    </form>
+</div>

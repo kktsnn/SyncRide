@@ -1,0 +1,19 @@
+@model App.DAL.DTO.Identity.AppUser
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Base.Resources.Domain._Shared.Details</h1>
+
+<div>
+    <h4>@Base.Resources.Domain.Identity.RAppUser.AppUsers</h4>
+    <hr />
+    
+    <partial name="_DetailDelete" model="Model"/>
+    
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">@Base.Resources.Domain._Shared.Edit</a> |
+    <a asp-action="Index">@Base.Resources.Domain._Shared.BackToList</a>
+</div>

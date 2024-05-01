@@ -1,0 +1,22 @@
+﻿@model App.DAL.DTO.Recipient
+
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.IsRead)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.IsRead)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Member)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Member!.Name)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.MessageHeader)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.MessageHeader!.Id)
+    </dd>
+</dl>

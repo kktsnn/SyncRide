@@ -1,0 +1,46 @@
+﻿@model App.DAL.DTO.Match
+
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.MatchPercent)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.MatchPercent)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.DeltaTime)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.DeltaTime)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.DeltaDist)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.DeltaDist)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Route1Accepted)1
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Route1Accepted)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Route2Accepted)2
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Route2Accepted)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Route1)1
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Route1!.Name)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Route2)2
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Route2!.Name)
+    </dd>
+</dl>

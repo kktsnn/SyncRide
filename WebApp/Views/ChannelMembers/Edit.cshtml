@@ -1,0 +1,59 @@
+@model ChannelMemberCreateEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>@Base.Resources.Domain._Shared.Edit</h1>
+
+<h4>@App.Resources.Domain.RChannelMember.ChannelMember</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <div class="row align-items-end">
+            <div class="col">
+                <form asp-action="Edit">
+                    <input type="hidden" asp-for="Id"/>
+
+                    <div class="row align-items-end">
+                        <div class="form-group col">
+                            <label asp-for="Nickname" class="control-label">@App.Resources.Domain.RChannelMember.Nickname</label>
+                            <input asp-for="Nickname" class="form-control"/>
+                            <span asp-validation-for="Nickname" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-auto p-0">
+                            <input type="submit" value="Save" class="btn btn-primary"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            @if (!Model.IsOwner!.Value)
+            {
+                <div class="col-md-auto">
+                    <form asp-action="Kick" asp-route-channelId="@Context.Request.RouteValues["channelId"]" asp-route-id="@Context.Request.RouteValues["id"]">
+                        <input type="hidden" asp-for="Id"/>
+                        <div class="form-group">
+                            <input type="submit" value="Kick" class="btn btn-outline-danger"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-auto p-0">
+                    <form asp-action="MakeOwner" asp-route-channelId="@Context.Request.RouteValues["channelId"]" asp-route-id="@Context.Request.RouteValues["id"]">
+                        <input type="hidden" asp-for="AppUserId">
+                        <div class="form-group">
+                            <input type="submit" value="Make Owner" class="btn btn-outline-warning"/>
+                        </div>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-id="@Context.Request.RouteValues["channelId"]" asp-controller="Channels">Back to Channel</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

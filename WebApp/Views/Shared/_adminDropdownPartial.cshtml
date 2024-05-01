@@ -1,0 +1,21 @@
+﻿@if (User.IsInRole("Admin"))
+{
+    <ul class="navbar-nav ms-2">
+        <li class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="admControllers" data-bs-toggle="dropdown" aria-expanded="false">
+                @Base.Resources.Views.Shared._Layout.AdminControllers
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" asp-area="Admin" asp-controller="ChannelMembers" asp-action="Index">@App.Resources.Domain.RChannelMember.ChannelMembers</a></li>
+                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Channels" asp-action="Index">@App.Resources.Domain.RChannel.Channels</a></li>
+                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Locations" asp-action="Index">@App.Resources.Domain.RLocation.Locations</a></li>
+                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Matches" asp-action="Index">@App.Resources.Domain.RMatch.Matches</a></li>
+                <li><a class="dropdown-item" asp-area="Admin" asp-controller="MessageHeaders" asp-action="Index">@App.Resources.Domain.RMessageHeader.MessageHeaders</a></li>
+                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Messages" asp-action="Index">@App.Resources.Domain.RMessage.Messages</a></li>
+                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Recipients" asp-action="Index">@App.Resources.Domain.RRecipient.Recipients</a></li>
+                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Routes" asp-action="Index">@App.Resources.Domain.RRoute.Routes</a></li>
+                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Index">@Base.Resources.Domain.Identity.RAppUser.AppUsers</a></li>
+            </ul>
+        </li>
+    </ul>
+}

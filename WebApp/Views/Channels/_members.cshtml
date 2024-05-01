@@ -1,0 +1,57 @@
+﻿@using App.Domain.Enums
+@using App.Domain.Identity
+@using Microsoft.AspNetCore.Identity
+@model ChannelLayoutViewModel
+@inject UserManager<AppUser> UserManager
+@{
+    string CombineIconPath(App.BLL.DTO.Identity.AppUser user)
+    {
+        return "/Assets/Icons/" +
+               (user.ProfilePictureExtension != null
+                   ? user.Id + user.ProfilePictureExtension
+                   : "default.png");
+    }
+}
+
+
+@if (Model.ActiveChannel == null)
+{
+    return;
+}
+<ul class="overflow-auto list-group">
+    @{ var isOwner = Model.ActiveChannel.OwnerId == Guid.Parse(UserManager.GetUserId(User)!); }
+    @if (Model.ActiveChannel.Type == EChannelType.Group && isOwner)
+    {
+        <li>
+            <a asp-controller="ChannelMembers" asp-action="Create" asp-route-channelId="@Model.ActiveChannel.Id" class="btn btn-outline-success w-100 mb-2">Add a member</a>
+        </li>
+    }
+    @if (Model.ActiveChannel.Members!.Count == 0)
+    {
+        <li>Strangely... now one is here?</li>
+    }
+    else
+    {
+        foreach (var cm in Model.ActiveChannel.Members)
+        {
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-auto">
+                        <img alt="@cm.Name icon" src="@CombineIconPath(cm.AppUser!)" width="40" height="40" class="@(
+                            Model.ActiveChannel.OwnerId == cm.AppUserId ? "border border-2 border-warning" : ""
+                        ) rounded-circle mt-1">
+                    </div>
+                    <div class="col">
+                        <span class="d-inline-block">@cm.Name</span>
+                        @if (isOwner)
+                        {
+                            <a asp-controller="ChannelMembers" asp-action="Edit" asp-route-channelId="@cm.ChannelId" asp-route-id="@cm.Id">@Base.Resources.Domain._Shared.Edit</a>
+                            <span> | </span>
+                        }
+                        <a asp-area="Identity" asp-page="/Account/Index" asp-route-id="@cm.AppUserId" asp-route-channelId="@cm.ChannelId">@App.Resources.Domain.RMatch.ViewProfile</a>
+                    </div>
+                </div>
+            </li>
+        }
+    }
+</ul>

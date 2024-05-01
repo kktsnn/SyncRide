@@ -1,0 +1,32 @@
+@using App.Domain.Enums
+@model App.BLL.DTO.Channel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>@Base.Resources.Domain._Shared.Edit</h1>
+
+<h4>@App.Resources.Domain.RChannel.Channel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            
+            <partial name="_CreateEdit" model="Model"/>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@Base.Resources.Domain._Shared.BackToList</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

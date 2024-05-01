@@ -1,0 +1,21 @@
+@model App.DAL.DTO.Location
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>@Base.Resources.Domain._Shared.Delete</h1>
+
+<h1>@Base.Resources.Domain._Shared.AreYouSure</h1>
+<div>
+    <h4>@App.Resources.Domain.RLocation.Location</h4>
+    <hr />
+    
+    <partial name="_DetailDelete" model="Model"/>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="@Base.Resources.Domain._Shared.Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">@Base.Resources.Domain._Shared.BackToList</a>
+    </form>
+</div>

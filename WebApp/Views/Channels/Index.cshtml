@@ -1,0 +1,21 @@
+@model ChannelLayoutViewModel
+
+<div class="row">
+    <div class="col-2">
+        <partial name="_channels" model="Model"/>
+    </div>
+    <div class="col">
+        <partial name="_chat" model="Model"/>
+    </div>
+    <div class="col-2">
+        <partial name="_members" model="Model"/>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        let m = document.querySelector("#messages");
+        m.scrollTop = m.scrollHeight;
+    </script>
+}

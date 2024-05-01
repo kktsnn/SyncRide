@@ -1,0 +1,58 @@
+@model App.BLL.DTO.Route
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>@Base.Resources.Domain._Shared.Edit</h1>
+
+<h4>@App.Resources.Domain.RRoute.Route - @Model.Name</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            
+            <partial name="_CreateEdit" model="Model"/>
+            
+            <div class="form-group">
+                @App.Resources.Domain.RLocation.Locations
+                <hr/>
+                @if (Model.Locations!.Count == 0)
+                {
+                    @App.Resources.Domain.RRoute.NoLocations
+                }
+                else
+                {
+                    @foreach (var l in Model.Locations!)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                @l
+                            </div>
+                            <div class="col-md-auto">
+                                <a asp-controller="Locations" asp-action="Edit" asp-route-id="@l.Id" asp-route-routeId="@Model.Id">@Base.Resources.Domain._Shared.Edit</a> | 
+                                <a asp-controller="Locations" asp-action="Delete" asp-route-id="@l.Id" asp-route-routeId="@Model.Id">@Base.Resources.Domain._Shared.Delete</a>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="mt-4">
+                    <a asp-controller="Locations" asp-action="Create" asp-route-routeId="@Model.Id" class="btn btn-info">@App.Resources.Domain.RRoute.AddLocation</a>
+                </div>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <input type="submit" value="@Base.Resources.Domain._Shared.Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@Base.Resources.Domain._Shared.BackToList</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

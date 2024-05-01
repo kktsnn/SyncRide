@@ -1,0 +1,28 @@
+﻿@model App.DAL.DTO.MessageHeader
+
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.SentAt)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.SentAt)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Sender)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Sender!.Name)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Channel)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Channel!.Name)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Parent)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Parent!.Id)
+    </dd>
+</dl>

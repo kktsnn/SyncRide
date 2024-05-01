@@ -1,0 +1,57 @@
+@using Microsoft.AspNetCore.Identity
+@using App.Domain.Identity
+@model IEnumerable<App.BLL.DTO.Match>
+@inject UserManager<AppUser> UserManager;
+
+@{
+    ViewData["Title"] = "Index";
+    
+    Guid GetMatchedUserId(App.BLL.DTO.Match m)
+    {
+        var userId = Guid.Parse(UserManager.GetUserId(User)!);
+        return m.Route1!.AppUserId == userId
+            ? m.Route2!.AppUserId
+            : m.Route1.AppUserId;
+    }
+}
+
+<h1>@App.Resources.Domain.RMatch.Matches</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MatchPercent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeltaTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeltaDist)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatchPercent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeltaTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeltaDist)
+            </td>
+            <td>
+                <a asp-area="Identity" asp-page="/Account/Index" asp-route-id="@GetMatchedUserId(item)">@App.Resources.Domain.RMatch.ViewProfile</a> |
+                <form class="d-inline" asp-action="Accept" method="post">
+                    <input type="hidden" name="id" value="@item.Id"/>
+                    <button type="submit" class="btn btn-outline-success">@App.Resources.Domain.RMatch.Accept</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

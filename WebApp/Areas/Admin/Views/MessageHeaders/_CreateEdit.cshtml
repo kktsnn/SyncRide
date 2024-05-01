@@ -1,0 +1,22 @@
+﻿@model WebApp.Areas.Admin.ViewModels.MessageHeaderCreateEditViewModel
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="MessageHeader.SenderId" class="control-label">@App.Resources.Domain.RMessageHeader.Sender</label>
+    <select asp-for="MessageHeader.SenderId" class ="form-control" asp-items="Model.SenderSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="MessageHeader.ChannelId" class="control-label">@App.Resources.Domain.RChannel.Channel</label>
+    <select asp-for="MessageHeader.ChannelId" class ="form-control" asp-items="Model.ChannelSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="MessageHeader.SentAt" class="control-label">@App.Resources.Domain.RMessageHeader.SentAt</label>
+    <input asp-for="MessageHeader.SentAt" class="form-control" />
+    <span asp-validation-for="MessageHeader.SentAt" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="MessageHeader.ParentId" class="control-label">@App.Resources.Domain.RMessageHeader.Parent</label>
+    <select asp-for="MessageHeader.ParentId" class="form-control" asp-items="Model.ParentMessageSelectList">
+        <option value=""></option>
+    </select>
+</div>

@@ -1,0 +1,23 @@
+﻿@using App.Domain.Enums
+@model WebApp.Areas.Admin.ViewModels.ChannelCreateEditViewModel
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Channel.Type" class="control-label">@App.Resources.Domain.RChannel.Type</label>
+    <select asp-for="Channel.Type" class="form-control" asp-items="@Html.GetEnumSelectList<EChannelType>()"></select>
+    <span asp-validation-for="Channel.Type" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Channel.Name" class="control-label">@App.Resources.Domain.RChannel.Name</label>
+    <input asp-for="Channel.Name" class="form-control" />
+    <span asp-validation-for="Channel.Name" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Channel.Description" class="control-label">@App.Resources.Domain.RChannel.Description</label>
+    <input asp-for="Channel.Description" class="form-control" />
+    <span asp-validation-for="Channel.Description" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Channel.OwnerId" class="control-label">@App.Resources.Domain.RChannel.Owner</label>
+    <select asp-for="Channel.OwnerId" class ="form-control" asp-items="Model.AppUserSelectList"></select>
+</div>

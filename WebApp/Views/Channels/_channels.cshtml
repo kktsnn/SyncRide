@@ -1,0 +1,21 @@
+﻿@model ChannelLayoutViewModel
+
+@if (!Model.Channels.Any())
+{
+    return;
+}
+
+<ul class="overflow-auto nav nav-underline flex-column h-100">
+    <li>
+        <a asp-action="Create" class="btn btn-outline-success mb-2 w-100">Create Group</a>
+    </li>
+    @foreach (var c in Model.Channels)
+    {
+        <li class="nav-item mb-2 border-bottom">
+            <a asp-area="" asp-action="Index" asp-route-id="@c.Id"
+               class="nav-link @(c.Id == Model.ActiveChannel?.Id ? "active" : "")">
+                @c.ChannelName
+            </a>
+        </li>
+    }
+</ul>

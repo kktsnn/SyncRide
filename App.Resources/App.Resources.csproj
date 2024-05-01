@@ -1,0 +1,109 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Domain\RChannel.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Channel.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Domain\RChannelMember.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ChannelMember.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Domain\RLocation.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Location.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Domain\RMatch.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Match.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Domain\RMention.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Mention.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Domain\RMessage.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Message.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Domain\RMessageHeader.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>MessageHeader.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Domain\RProfilePicture.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>ProfilePicture.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Domain\RReaction.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Reaction.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Domain\RRecipient.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Recipient.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Domain\RRoute.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Route.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Domain\RChannel.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RChannel.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Domain\RChannelMember.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RChannelMember.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Domain\RMatch.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RMatch.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Domain\RMention.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RMention.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Domain\RMessage.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RMessage.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Domain\RMessageHeader.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RMessageHeader.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Domain\RProfilePicture.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RProfilePicture.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Domain\RReaction.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RReaction.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Domain\RRecipient.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RRecipient.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Domain\RRoute.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RRoute.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

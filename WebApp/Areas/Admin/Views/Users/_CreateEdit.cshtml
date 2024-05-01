@@ -1,0 +1,24 @@
+﻿@using App.Domain.Enums
+@model WebApp.Areas.Admin.ViewModels.UsersCreateEditIndexViewModel
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="FirstName" class="control-label">@Base.Resources.Domain.Identity.RAppUser.FirstName</label>
+    <input asp-for="FirstName" class="form-control" />
+    <span asp-validation-for="FirstName" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="LastName" class="control-label">@Base.Resources.Domain.Identity.RAppUser.LastName</label>
+    <input asp-for="LastName" class="form-control" />
+    <span asp-validation-for="LastName" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Email" class="control-label">@Base.Resources.Domain.Identity.RAppUser.Email</label>
+    <input asp-for="Email" class="form-control" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Password" class="control-label">@Base.Resources.Domain.Identity.RAppUser.Password</label>
+    <input asp-for="Password" class="form-control" />
+    <span asp-validation-for="Password" class="text-danger"></span>
+</div>
